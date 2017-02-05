@@ -1,3 +1,4 @@
+<<<<<<< HEAD:styles.css
 /* Master Styles */
 h1 {
   color: #369;
@@ -110,3 +111,10 @@ nav a.active {
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+=======
+h1 {
+  color: #369;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 250%;
+}
+>>>>>>> d0e75940f0f4a7a621a4f2da9361fdf4cebac97a:src/styles.css
