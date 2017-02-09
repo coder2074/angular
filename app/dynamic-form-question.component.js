@@ -15,7 +15,9 @@ var DynamicFormQuestionComponent = (function () {
     function DynamicFormQuestionComponent() {
     }
     Object.defineProperty(DynamicFormQuestionComponent.prototype, "isValid", {
-        get: function () { return this.form.controls[this.question.key].valid; },
+        get: function () {
+            return this.form.controls[this.question.key].valid;
+        },
         enumerable: true,
         configurable: true
     });

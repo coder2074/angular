@@ -15,14 +15,11 @@ var common_1 = require('@angular/common');
 var hero_service_1 = require('./hero.service');
 require('rxjs/add/operator/switchMap');
 var hero_1 = require('./hero');
-var question_service_1 = require('./question.service');
 var HeroEditComponent = (function () {
-    function HeroEditComponent(heroService, route, location, questionService) {
+    function HeroEditComponent(heroService, route, location) {
         this.heroService = heroService;
         this.route = route;
         this.location = location;
-        this.questionService = questionService;
-        this.questions = questionService.getQuestions();
     }
     HeroEditComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -48,9 +45,8 @@ var HeroEditComponent = (function () {
             selector: 'my-hero-edit',
             templateUrl: 'hero-edit.component.html',
             styleUrls: ['./hero-edit.component.css'],
-            providers: [question_service_1.QuestionService]
         }), 
-        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location, question_service_1.QuestionService])
+        __metadata('design:paramtypes', [hero_service_1.HeroService, router_1.ActivatedRoute, common_1.Location])
     ], HeroEditComponent);
     return HeroEditComponent;
 }());

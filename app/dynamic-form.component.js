@@ -10,17 +10,29 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var question_control_service_1 = require('./question-control.service');
+var question_service_1 = require('./question.service');
 var DynamicFormComponent = (function () {
-    function DynamicFormComponent(qcs) {
+    function DynamicFormComponent(qcs, questionService) {
         this.qcs = qcs;
+        this.questionService = questionService;
         this.questions = [];
         this.payLoad = '';
+        this.mode = 'Observable';
     }
     DynamicFormComponent.prototype.ngOnInit = function () {
+        this.getQuestions();
         this.form = this.qcs.toFormGroup(this.questions);
     };
     DynamicFormComponent.prototype.onSubmit = function () {
         this.payLoad = JSON.stringify(this.form.value);
+    };
+    DynamicFormComponent.prototype.getQuestions = function () {
+        var _this = this;
+        this.questionService.getQuestions()
+            .subscribe(function (questions) {
+            _this.questions = questions;
+            _this.form = _this.qcs.toFormGroup(questions);
+        }, function (error) { return _this.errorMessage = error; });
     };
     __decorate([
         core_1.Input(), 
@@ -31,9 +43,9 @@ var DynamicFormComponent = (function () {
             moduleId: module.id,
             selector: 'dynamic-form',
             templateUrl: 'dynamic-form.component.html',
-            providers: [question_control_service_1.QuestionControlService]
+            providers: [question_control_service_1.QuestionControlService, question_service_1.QuestionService]
         }), 
-        __metadata('design:paramtypes', [question_control_service_1.QuestionControlService])
+        __metadata('design:paramtypes', [question_control_service_1.QuestionControlService, question_service_1.QuestionService])
     ], DynamicFormComponent);
     return DynamicFormComponent;
 }());
